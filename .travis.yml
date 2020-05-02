@@ -20,3 +20,17 @@ after-success:
  - docker push rahmane/multi-nginx
  - docker push rahmane/multi-server
  - docker push rahmane/multi-worker
+
+deploy:
+ edge: true
+ provider: elasticbeanstalk
+ region: "us-east-2"
+ app: "docker-multi"
+ env: "multi-docker"
+ bucket_name: "elasticbeanstalk-us-east-2-055356099372"
+ bucket_path: "Multi-Docker"
+ on:
+  branch: master
+ acess_key_id: $AWS_ACCESS_KEY
+ secret_access_key: $AWS_SECRET_KEY
+
